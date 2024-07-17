@@ -596,6 +596,7 @@ class Optimize extends Base
 					$add_values_array = [];
 					$add_data .= ':';
 
+					// Has italic only.
 					if($options[1] == 'ital'){
 						foreach( [100,200,300,400,500,600,700,800,900] as $weight ){
 							$add_values_array[] = $weight;
@@ -603,14 +604,16 @@ class Optimize extends Base
 						}
 					}
 					else{
+						// Font_modifier and Font_modifier_values.
 						$options = explode('@', $options[1]);
 
 						// Font modifiers and values
 						$font_modifier = explode(',', $options[0]);
 						$font_modifier_values = explode(';', $options[1]);
 
-						// Modify values to css1.
+						// Go through each values.
 						foreach($font_modifier_values as $k => &$modifier_value){
+							// Get array of values for each combination.
 							$modifier_value_array = explode(',', $modifier_value);
 
 							// Italic key.
@@ -686,7 +689,7 @@ class Optimize extends Base
 		 *
 		 * Could be multiple fonts
 		 *
-		 * 	 CSS API V1
+		 * CSS API V1
 		 * 	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C800%2C300&#038;ver=4.9.8' type='text/css' media='all' />
 		 *	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=PT+Sans%3A400%2C700%7CPT+Sans+Narrow%3A400%7CMontserrat%3A600&#038;subset=latin&#038;ver=4.9.8' type='text/css' media='all' />
 		 *		-> family: PT Sans:400,700|PT Sans Narrow:400|Montserrat:600
