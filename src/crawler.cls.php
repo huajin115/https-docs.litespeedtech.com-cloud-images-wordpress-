@@ -1209,6 +1209,8 @@ class Crawler extends Root
 	{
 		File::save($this->_resetfile, time(), true);
 
+		$this->Release_lane();
+
 		self::save_summary(array('is_running' => 0));
 	}
 
